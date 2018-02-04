@@ -44,11 +44,16 @@
             isSelectedChariot: function () {
                 return this.selected.name == this.chariot.name;
             },
+            hasMoreHorses: function () {
+                return this.selected.horses < this.chariot.horses;
+            },
             action: function () {
                 if (this.noChariot) {
                     action = 'Pick Chariot'
                 } else if (this.isSelectedChariot) {
                     action = 'Riding!'
+                } else if (this.hasMoreHorses) {
+                    action = 'Hire Horses'
                 }
                 return action;
             }
