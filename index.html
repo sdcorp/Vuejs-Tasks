@@ -11,6 +11,8 @@
 <body>
     <div id="app">
         <h1>Hello {{name}}</h1>
+        <label for="gender">Enter your gender:</label>
+        <input v-model="gender">
         <label for="name">Enter your name:</label>
         <input v-model="name">
     </div>
@@ -19,7 +21,8 @@
 <script>
     new Vue({
         el: '#app',
-        name: ''
+        name: '',
+        gender: ''
     })
 </script>
 </html>
