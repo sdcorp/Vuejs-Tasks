@@ -21,7 +21,7 @@
     <template id="chariot">
         <li class="list-group-item">
             " {{chariot.name}} " chariot has {{chariot.horses}} horses
-            <button @click="rideChariot(chariot)" class="btn btn-primary">
+            <button @click="rideChariot(chariot)" class="btn btn-primary" :disabled="isSelectedChariot">
                 {{action}}
             </button>
         </li>
@@ -41,9 +41,14 @@
             noChariot: function () {
                 return this.selected.name == null;
             },
+            isSelectedChariot: function () {
+                return this.selected.name == this.chariot.name;
+            },
             action: function () {
                 if (this.noChariot) {
                     action = 'Pick Chariot'
+                } else if (this.isSelectedChariot) {
+                    action = 'Riding!'
                 }
                 return action;
             }
