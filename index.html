@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
 </head>
 
@@ -20,6 +19,22 @@
 <script>
     new Vue({
         el: '#app',
+        data: {
+            candidates: [
+                {
+                    name: 'White',
+                    votes: 0,
+                },
+                {
+                    name: 'Black',
+                    votes: 0,
+                },
+                {
+                    name: 'Green',
+                    votes: 0,
+                }
+            ]
+        }
     })
 </script>
 
