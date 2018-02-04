@@ -10,13 +10,13 @@
         crossorigin="anonymous">
 </head>
 
-<body>
+<body @keyup.c="clear">
     <div id="app" class="container">
         <h1>Mayor candidates</h1>
         <ul class="list-group">
             <li class="list-group-item" v-for=" person in candidates">
                 Mr. {{person.name}}: {{person.votes}}
-                <button class="btn btn-default" @click="person.votes++" >Vote</button>
+                <button class="btn btn-default" @click="person.votes++">Vote</button>
             </li>
         </ul>
         <h1>Our Mayor is Mr. {{mayor.name}} </h1>
@@ -25,7 +25,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
 <script>
     new Vue({
-        el: '#app',
+        el: 'body',
         data: {
             candidates: [
                 {
@@ -43,14 +43,22 @@
             ]
         },
         computed: {
-            mayor: function () { 
+            mayor: function () {
                 // sort by DESC
-                var candidatesSorted = this.candidates.sort(function (a, b) { 
+                var candidatesSorted = this.candidates.sort(function (a, b) {
                     return b.votes - a.votes;
-                 });
-                 // first item = mayor
-                 return candidatesSorted[0];
-             }
+                });
+                // first item = mayor
+                return candidatesSorted[0];
+            }
+        },
+        methods: {
+            clear: function () {
+                this.candidates = this.candidates.map(function (person) {
+                    person.votes = 0;
+                    return person;
+                });
+            }
         }
     })
 </script>
