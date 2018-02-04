@@ -16,6 +16,7 @@
         <ul class="list-group">
             <li class="list-group-item" v-for=" person in candidates">
                 Mr. {{person.name}}: {{person.votes}}
+                <button class="btn btn-default" @click="person.votes++" >Vote</button>
             </li>
         </ul>
     </div>
