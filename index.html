@@ -6,25 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
 </head>
 
 <body>
     <div id="app" class="container">
         <h2>People</h2>
-        <ul class="list-group" v-for="person in people | orderBy 'age' order " >
+        <ul class="list-group" v-for="person in people | orderBy 'age' order ">
             <li class="list-group-item">
                 {{person.name}}, age {{person.age}}
             </li>
         </ul>
-        <button @click = "order *= -1" > Sort by ASC/DESC </button>
+        <br>
+        <button @click="order *= -1"> Sort by ASC/DESC </button>
+        <br><br>
+        <h2>"Old" People (age > 55)</h2>
+        <ul class="list-group" v-for="person in people | old ">
+            <li class="list-group-item">
+                {{person.name}}, age {{person.age}}
+            </li>
+        </ul>
+        <br>
         <pre> {{ $data | json}} </pre>
     </div>
 </body>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
 <script>
+    Vue.filter('old', function (people) { 
+        return people.filter(function (val) { 
+            return val.age > 55;
+         })
+     });
     new Vue({
         el: '#app',
         data: {
