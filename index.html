@@ -10,7 +10,12 @@
 
 <body>
     <div id="app">
-        <h1>Hello {{name}}</h1>
+        <h1 v-if="gender=='male' || gender=='female'">
+            Hello,
+            <span v-show="gender=='male'">Mister {{name}}.</span>
+            <span v-if="gender=='female'">Miss {{name}}.</span>
+        </h1>
+        <p v-else>Enter a valid gender, human.</p>
         <label for="gender">Enter your gender:</label>
         <input v-model="gender">
         <label for="name">Enter your name:</label>
@@ -21,8 +26,9 @@
 <script>
     new Vue({
         el: '#app',
-        name: '',
-        gender: ''
+        name: 'undefined',
+        gender: 'undefined'
     })
 </script>
+
 </html>
