@@ -12,7 +12,12 @@
 
 <body>
     <div id="app" class="container">
-
+        <h1>Mayor candidates</h1>
+        <ul class="list-group">
+            <li class="list-group-item" v-for=" person in candidates">
+                Mr. {{person.name}}: {{person.votes}}
+            </li>
+        </ul>
     </div>
 </body>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
