@@ -12,8 +12,15 @@
 </head>
 
 <body>
-    <div id="app">
-
+    <div id="app" class="container">
+        <h2>People</h2>
+        <ul class="list-group" v-for="person in people | orderBy 'age' order " >
+            <li class="list-group-item">
+                {{person.name}}, age {{person.age}}
+            </li>
+        </ul>
+        <button @click = "order *= -1" > Sort by ASC/DESC </button>
+        <pre> {{ $data | json}} </pre>
     </div>
 </body>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
@@ -21,14 +28,15 @@
     new Vue({
         el: '#app',
         data: {
+            order: -1,
             people: [
                 {
                     name: 'Ivan',
-                    age: 40
+                    age: 50
                 },
                 {
                     name: 'Petro',
-                    age: 50
+                    age: 40
                 },
                 {
                     name: 'Sergey',
