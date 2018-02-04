@@ -22,7 +22,7 @@
         <li class="list-group-item">
             " {{chariot.name}} " chariot has {{chariot.horses}} horses
             <button @click="rideChariot(chariot)" class="btn btn-primary">
-                Select
+                {{action}}
             </button>
         </li>
     </template>
@@ -35,6 +35,17 @@
         methods: {
             rideChariot: function (chariot) {
                 this.selected = chariot;
+            }
+        },
+        computed: {
+            noChariot: function () {
+                return this.selected.name == null;
+            },
+            action: function () {
+                if (this.noChariot) {
+                    action = 'Pick Chariot'
+                }
+                return action;
             }
         }
 
