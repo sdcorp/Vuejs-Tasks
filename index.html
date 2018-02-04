@@ -19,6 +19,7 @@
                 <button class="btn btn-default" @click="person.votes++" >Vote</button>
             </li>
         </ul>
+        <h1>Our Mayor is Mr. {{mayor.name}} </h1>
     </div>
 </body>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
@@ -40,6 +41,16 @@
                     votes: 0,
                 }
             ]
+        },
+        computed: {
+            mayor: function () { 
+                // sort by DESC
+                var candidatesSorted = this.candidates.sort(function (a, b) { 
+                    return b.votes - a.votes;
+                 });
+                 // first item = mayor
+                 return candidatesSorted[0];
+             }
         }
     })
 </script>
