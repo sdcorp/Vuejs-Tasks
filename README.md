@@ -1,3 +1,7 @@
 # Vuejs Tasks
 
-My homework solutions for "The Majesty of Vue.js" book.
+## Chapter 7
+
+Create an input where the user can choose a color. 
+
+When a color is chosen, apply it to the body. 
